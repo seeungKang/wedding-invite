@@ -37,20 +37,20 @@ function App() {
         <div className="ceremony-section">
           <div className="ceremony-item">
             <h3>예식 일시</h3>
-            <p className="date">2026년 6월 13일 (토)</p>
-            <p className="time">오후 3시</p>
+            <p className="date">2026년 12월 19일 (토)</p>
+            <p className="time">오후 1시</p>
           </div>
 
           <div className="ceremony-item">
             <h3>예식 장소</h3>
-            <p className="location">그랜드 컨벤션</p>
-            <p className="address">서울시 강남구 테헤란로</p>
+            <p className="location">네이버 1784</p>
+            <p className="address">28층 스카이홀</p>
           </div>
 
           <div className="ceremony-item">
             <h3>피로연</h3>
             <p className="time">식후 즉시</p>
-            <p className="location">3층 그랜드홀</p>
+            <p className="location">28층 스카이홀</p>
           </div>
         </div>
 
