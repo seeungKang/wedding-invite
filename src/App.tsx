@@ -6,16 +6,16 @@ function App() {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
 
   const images = [
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1543269865-cbdf26405b4e?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1502414003326-c8787366eab2?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1526438773649-5e3dacb4d4fa?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1515182629504-727d32753751?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1500595046891-0573ceb3b5a4?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1534073828943-38d6ac6b7dd6?w=600&h=600&fit=crop",
+    "/wedding-invite/DSC03004.JPG",
+    "/wedding-invite/DSC03014.JPG",
+    "/wedding-invite/DSC03025.JPG",
+    "/wedding-invite/DSC03034.JPG",
+    "/wedding-invite/DSC03037.JPG",
+    "/wedding-invite/DSC03081.JPG",
+    "/wedding-invite/DSC03094.JPG",
+    "/wedding-invite/DSC03105.JPG",
+    "/wedding-invite/DSC03114.JPG",
+    "/wedding-invite/DSC03116.JPG",
   ];
 
   const nextImage = () => {
@@ -133,17 +133,16 @@ function App() {
           <div className="account-card">
             <div className="account-item">
               <div className="account-header">
-                <p className="account-label"><strong>신랑</strong></p>
+                <p className="account-label">
+                  <strong>신랑</strong>
+                </p>
                 <p className="account-name">강세응</p>
               </div>
               <p className="account-number">우리은행 1234-567-890123</p>
               <button
                 className="copy-btn"
                 onClick={() =>
-                  copyToClipboard(
-                    "우리은행 1234-567-890123",
-                    "groom"
-                  )
+                  copyToClipboard("우리은행 1234-567-890123", "groom")
                 }
               >
                 {copiedAccount === "groom" ? "✓ 복사됨" : "복사"}
@@ -153,17 +152,16 @@ function App() {
           <div className="account-card">
             <div className="account-item">
               <div className="account-header">
-                <p className="account-label"><strong>신부</strong></p>
+                <p className="account-label">
+                  <strong>신부</strong>
+                </p>
                 <p className="account-name">김하얀</p>
               </div>
               <p className="account-number">국민은행 098-765-432109</p>
               <button
                 className="copy-btn"
                 onClick={() =>
-                  copyToClipboard(
-                    "국민은행 098-765-432109",
-                    "bride"
-                  )
+                  copyToClipboard("국민은행 098-765-432109", "bride")
                 }
               >
                 {copiedAccount === "bride" ? "✓ 복사됨" : "복사"}
