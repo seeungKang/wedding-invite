@@ -1,13 +1,15 @@
-import sharp from 'sharp';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const publicDir = path.join(__dirname, 'public');
-const files = fs.readdirSync(publicDir).filter(file => /\.(jpg|jpeg|png)$/i.test(file));
+const publicDir = path.join(__dirname, "public");
+const files = fs
+  .readdirSync(publicDir)
+  .filter((file) => /\.(jpg|jpeg|png)$/i.test(file));
 
 console.log(`Removing EXIF metadata from ${files.length} images...`);
 
@@ -29,4 +31,4 @@ for (const file of files) {
   }
 }
 
-console.log('Done!');
+console.log("Done!");
