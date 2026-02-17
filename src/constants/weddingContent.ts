@@ -14,7 +14,7 @@ const baseUrl = import.meta.env.BASE_URL;
 export const heroContent: HeroContent = {
   eyebrow: "저희 결혼식에 초대합니다",
   title: "결혼합니다",
-  coupleNames: "강세응 ♥ 김하얀",
+  coupleNames: "강세응 ♡ 김하얀",
   eventSummary: "2026년 12월 19일 토요일 오후 1시",
 };
 
@@ -49,70 +49,20 @@ export const calendarInfo: CalendarInfo = {
   year: 2026,
   month: 12,
   highlightedDay: 19,
-  caption: "강세응 ♥ 김하얀의 결혼식이 12월 19일 입니다.",
+  caption: "세응 ♡ 하얀의 결혼식이 12월 19일 입니다.",
 };
 
 export const galleryItems: GalleryItem[] = [
-  {
-    id: "photo-01",
-    thumbSrc: `${baseUrl}images/dsc03004.webp`,
-    fullSrc: `${baseUrl}images/dsc03004.webp`,
-    alt: "웨딩 사진 1",
-  },
-  {
-    id: "photo-02",
-    thumbSrc: `${baseUrl}images/dsc03014.webp`,
-    fullSrc: `${baseUrl}images/dsc03014.webp`,
-    alt: "웨딩 사진 2",
-  },
-  {
-    id: "photo-03",
-    thumbSrc: `${baseUrl}images/dsc03025.webp`,
-    fullSrc: `${baseUrl}images/dsc03025.webp`,
-    alt: "웨딩 사진 3",
-  },
-  {
-    id: "photo-04",
-    thumbSrc: `${baseUrl}images/dsc03034.webp`,
-    fullSrc: `${baseUrl}images/dsc03034.webp`,
-    alt: "웨딩 사진 4",
-  },
-  {
-    id: "photo-05",
-    thumbSrc: `${baseUrl}images/dsc03037.webp`,
-    fullSrc: `${baseUrl}images/dsc03037.webp`,
-    alt: "웨딩 사진 5",
-  },
-  {
-    id: "photo-06",
-    thumbSrc: `${baseUrl}images/dsc03081.webp`,
-    fullSrc: `${baseUrl}images/dsc03081.webp`,
-    alt: "웨딩 사진 6",
-  },
-  {
-    id: "photo-07",
-    thumbSrc: `${baseUrl}images/dsc03094.webp`,
-    fullSrc: `${baseUrl}images/dsc03094.webp`,
-    alt: "웨딩 사진 7",
-  },
-  {
-    id: "photo-08",
-    thumbSrc: `${baseUrl}images/dsc03105.webp`,
-    fullSrc: `${baseUrl}images/dsc03105.webp`,
-    alt: "웨딩 사진 8",
-  },
-  {
-    id: "photo-09",
-    thumbSrc: `${baseUrl}images/dsc03114.webp`,
-    fullSrc: `${baseUrl}images/dsc03114.webp`,
-    alt: "웨딩 사진 9",
-  },
-  {
-    id: "photo-10",
-    thumbSrc: `${baseUrl}images/dsc03116.webp`,
-    fullSrc: `${baseUrl}images/dsc03116.webp`,
-    alt: "웨딩 사진 10",
-  },
+  { id: "photo-01", thumbSrc: `${baseUrl}images/dsc03004.webp`, fullSrc: `${baseUrl}images/dsc03004.webp`, alt: "웨딩 사진 1" },
+  { id: "photo-02", thumbSrc: `${baseUrl}images/dsc03014.webp`, fullSrc: `${baseUrl}images/dsc03014.webp`, alt: "웨딩 사진 2" },
+  { id: "photo-03", thumbSrc: `${baseUrl}images/dsc03025.webp`, fullSrc: `${baseUrl}images/dsc03025.webp`, alt: "웨딩 사진 3" },
+  { id: "photo-04", thumbSrc: `${baseUrl}images/dsc03034.webp`, fullSrc: `${baseUrl}images/dsc03034.webp`, alt: "웨딩 사진 4" },
+  { id: "photo-05", thumbSrc: `${baseUrl}images/dsc03037.webp`, fullSrc: `${baseUrl}images/dsc03037.webp`, alt: "웨딩 사진 5" },
+  { id: "photo-06", thumbSrc: `${baseUrl}images/dsc03081.webp`, fullSrc: `${baseUrl}images/dsc03081.webp`, alt: "웨딩 사진 6" },
+  { id: "photo-07", thumbSrc: `${baseUrl}images/dsc03094.webp`, fullSrc: `${baseUrl}images/dsc03094.webp`, alt: "웨딩 사진 7" },
+  { id: "photo-08", thumbSrc: `${baseUrl}images/dsc03105.webp`, fullSrc: `${baseUrl}images/dsc03105.webp`, alt: "웨딩 사진 8" },
+  { id: "photo-09", thumbSrc: `${baseUrl}images/dsc03114.webp`, fullSrc: `${baseUrl}images/dsc03114.webp`, alt: "웨딩 사진 9" },
+  { id: "photo-10", thumbSrc: `${baseUrl}images/dsc03116.webp`, fullSrc: `${baseUrl}images/dsc03116.webp`, alt: "웨딩 사진 10" },
 ];
 
 export const locationInfo: LocationInfo = {
@@ -121,10 +71,8 @@ export const locationInfo: LocationInfo = {
   venueName: eventInfo.venueName,
   venueAddress: eventInfo.venueAddress,
   venuePhone: eventInfo.venuePhone,
-  naverMapUrl:
-    "https://map.naver.com/v5/search/%EB%84%A4%EC%9D%B4%EB%B2%84%201784",
-  kakaoNaviUrl:
-    "https://map.kakao.com/?q=%EB%84%A4%EC%9D%B4%EB%B2%84%201784",
+  naverMapUrl: "https://map.naver.com/v5/search/%EB%84%A4%EC%9D%B4%EB%B2%84%201784",
+  kakaoNaviUrl: "https://map.kakao.com/?q=%EB%84%A4%EC%9D%B4%EB%B2%84%201784",
   subwayLines: [
     "신분당선 정자역 4번 출구 도보 약 10분",
     "분당선 정자역 3번 출구 도보 약 10분",
@@ -218,5 +166,5 @@ export const accountGroups: AccountGroup[] = [
 
 export const footerContent: FooterContent = {
   tagline: "함께해 주셔서 감사합니다",
-  copyright: "저작권 © 2026 강세응 ♥ 김하얀. 모든 권리 보유.",
+  copyright: "Copyright © 2026 강세응 ♡ 김하얀. All rights reserved.",
 };

@@ -12,16 +12,7 @@ type ToastState = {
 } | null;
 
 function AccountSection({ groups }: AccountSectionProps) {
-  const [openItemMap, setOpenItemMap] = useState<Record<string, boolean>>(() => {
-    const firstOpenMap: Record<string, boolean> = {};
-    for (const group of groups) {
-      const firstItem = group.items[0];
-      if (firstItem !== undefined) {
-        firstOpenMap[firstItem.id] = true;
-      }
-    }
-    return firstOpenMap;
-  });
+  const [openItemMap, setOpenItemMap] = useState<Record<string, boolean>>({});
   const [toastState, setToastState] = useState<ToastState>(null);
 
   const allItems = useMemo(() => groups.flatMap((group) => group.items), [groups]);

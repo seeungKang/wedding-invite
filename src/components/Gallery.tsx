@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { GalleryItem } from "../types/wedding";
 
@@ -13,8 +13,18 @@ function Gallery({ items }: GalleryProps) {
 
   const hasMoreItems = visibleCount < items.length;
   const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
-  const indexedItem = viewerIndex !== null ? items[viewerIndex] : undefined;
-  const activeItem = indexedItem ?? null;
+  const activeItem = viewerIndex !== null ? items[viewerIndex] ?? null : null;
+
+  useEffect(() => {
+    if (viewerIndex !== null) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+    document.body.style.overflow = "";
+    return undefined;
+  }, [viewerIndex]);
 
   const handleImageError = (id: string) => {
     setFailedImageIds((previous) => new Set(previous).add(id));
@@ -54,14 +64,13 @@ function Gallery({ items }: GalleryProps) {
       <div className="gallery-grid">
         {visibleItems.map((item, index) => {
           const isFailed = failedImageIds.has(item.id);
-          const absoluteIndex = index;
 
           return (
             <button
               key={item.id}
               className="gallery-thumb-button"
-              onClick={() => handleOpenViewer(absoluteIndex)}
-              aria-label={`${absoluteIndex + 1}번 사진 보기`}
+              onClick={() => handleOpenViewer(index)}
+              aria-label={`${index + 1}번 사진 보기`}
               type="button"
             >
               {isFailed ? (
@@ -83,7 +92,7 @@ function Gallery({ items }: GalleryProps) {
       {hasMoreItems ? (
         <button
           className="outline-button"
-          onClick={() => setVisibleCount((currentCount) => currentCount + 6)}
+          onClick={() => setVisibleCount(items.length)}
           type="button"
         >
           사진 전체보기
@@ -92,31 +101,37 @@ function Gallery({ items }: GalleryProps) {
 
       {activeItem !== null ? (
         <div className="viewer-overlay" role="dialog" aria-modal="true">
-          <button
-            className="viewer-close"
-            onClick={handleCloseViewer}
-            aria-label="사진 뷰어 닫기"
-            type="button"
-          >
-            닫기
-          </button>
-          <button
-            className="viewer-nav viewer-prev"
-            onClick={handlePrevious}
-            aria-label="이전 사진"
-            type="button"
-          >
-            이전
-          </button>
-          <img className="viewer-image" src={activeItem.fullSrc} alt={activeItem.alt} />
-          <button
-            className="viewer-nav viewer-next"
-            onClick={handleNext}
-            aria-label="다음 사진"
-            type="button"
-          >
-            다음
-          </button>
+          <div className="viewer-toolbar">
+            <p className="viewer-title">갤러리</p>
+            <button
+              className="viewer-close"
+              onClick={handleCloseViewer}
+              aria-label="사진 뷰어 닫기"
+              type="button"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="viewer-stage">
+            <button
+              className="viewer-nav viewer-prev"
+              onClick={handlePrevious}
+              aria-label="이전 사진"
+              type="button"
+            >
+              ‹
+            </button>
+            <img className="viewer-image" src={activeItem.fullSrc} alt={activeItem.alt} />
+            <button
+              className="viewer-nav viewer-next"
+              onClick={handleNext}
+              aria-label="다음 사진"
+              type="button"
+            >
+              ›
+            </button>
+          </div>
           <p className="viewer-index">{`${(viewerIndex ?? 0) + 1} / ${items.length}`}</p>
         </div>
       ) : null}

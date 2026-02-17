@@ -63,7 +63,7 @@ function App() {
         <LocationSection location={locationInfo} />
         <AccountSection groups={accountGroups} />
 
-        <section className="section event-meta">
+        <section className="section event-meta" id="detail">
           <p>{eventInfo.eventDateLabel}</p>
           <p>{eventInfo.eventTime}</p>
           <p>{`${eventInfo.venueName} · ${eventInfo.venueAddress}`}</p>
