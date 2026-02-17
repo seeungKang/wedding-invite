@@ -24,7 +24,7 @@ function App() {
           <img
             className="hero-image"
             src={galleryItems[0]?.fullSrc}
-            alt="Wedding cover"
+            alt="청첩장 대표 이미지"
             fetchPriority="high"
           />
           <div className="hero-overlay" />
@@ -66,7 +66,7 @@ function App() {
         <section className="section event-meta">
           <p>{eventInfo.eventDateLabel}</p>
           <p>{eventInfo.eventTime}</p>
-          <p>{eventInfo.venueName}</p>
+          <p>{`${eventInfo.venueName} · ${eventInfo.venueAddress}`}</p>
         </section>
 
         <FooterMessage {...footerContent} />

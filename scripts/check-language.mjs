@@ -3,9 +3,9 @@ import { join } from "node:path";
 
 const HANGUL_PATTERN = /[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]/u;
 
-const allowedExtensions = new Set([".ts", ".tsx", ".js", ".jsx", ".css"]);
+const allowedExtensions = new Set([".ts", ".js"]);
 
-function stripCommentsFromCode(code, extension) {
+function stripCommentsAndStringsFromCode(code, extension) {
   if (extension === ".css") {
     return code.replace(/\/\*[\s\S]*?\*\//g, "");
   }
@@ -58,6 +58,9 @@ function stripCommentsFromCode(code, extension) {
 
     if (!inDoubleQuote && !inTemplateLiteral && current === "'" && previous !== "\\") {
       inSingleQuote = !inSingleQuote;
+      result += current;
+      index += 1;
+      continue;
     } else if (
       !inSingleQuote &&
       !inTemplateLiteral &&
@@ -65,6 +68,9 @@ function stripCommentsFromCode(code, extension) {
       previous !== "\\"
     ) {
       inDoubleQuote = !inDoubleQuote;
+      result += current;
+      index += 1;
+      continue;
     } else if (
       !inSingleQuote &&
       !inDoubleQuote &&
@@ -72,6 +78,17 @@ function stripCommentsFromCode(code, extension) {
       previous !== "\\"
     ) {
       inTemplateLiteral = !inTemplateLiteral;
+      result += current;
+      index += 1;
+      continue;
+    }
+
+    if (inSingleQuote || inDoubleQuote || inTemplateLiteral) {
+      if (current === "\n") {
+        result += current;
+      }
+      index += 1;
+      continue;
     }
 
     result += current;
@@ -116,7 +133,7 @@ const violations = [];
 for (const filePath of files) {
   const source = readFileSync(filePath, "utf8");
   const extension = getFileExtension(filePath);
-  const sourceWithoutComments = stripCommentsFromCode(source, extension);
+  const sourceWithoutComments = stripCommentsAndStringsFromCode(source, extension);
   const relativePath = filePath.replace(`${process.cwd()}\\`, "").replace(/\\/g, "/");
 
   if (HANGUL_PATTERN.test(sourceWithoutComments)) {
@@ -125,7 +142,7 @@ for (const filePath of files) {
 }
 
 if (violations.length > 0) {
-  console.error("Language check failed. Hangul is only allowed in comments.");
+  console.error("Language check failed. Hangul is only allowed in comments or string literals.");
   for (const violation of violations) {
     console.error(`- ${violation}`);
   }

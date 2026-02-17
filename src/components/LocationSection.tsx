@@ -13,27 +13,27 @@ function LocationSection({ location }: LocationSectionProps) {
     try {
       const openedWindow = window.open(url, "_blank", "noopener,noreferrer");
       if (openedWindow === null) {
-        setLinkError("Unable to open map app. Please copy the address.");
+        setLinkError("지도 앱을 열 수 없습니다. 주소를 복사해 주세요.");
       } else {
         setLinkError(null);
       }
     } catch {
-      setLinkError("Unable to open map app. Please copy the address.");
+      setLinkError("지도 앱을 열 수 없습니다. 주소를 복사해 주세요.");
     }
   };
 
   const handleCopyAddress = async () => {
     try {
       await navigator.clipboard.writeText(location.venueAddress);
-      setLinkError("Address copied to clipboard.");
+      setLinkError("주소가 복사되었습니다.");
     } catch {
-      setLinkError("Address copy failed. Please copy manually.");
+      setLinkError("주소 복사에 실패했습니다. 수동으로 복사해 주세요.");
     }
   };
 
   return (
     <section className="section location" id="location">
-      <h2 className="section-title">Location</h2>
+      <h2 className="section-title">오시는 길</h2>
       <div className="section-rule" />
 
       <img
@@ -45,9 +45,11 @@ function LocationSection({ location }: LocationSectionProps) {
 
       <h3 className="venue-title">{location.venueName}</h3>
       <p className="venue-text">{location.venueAddress}</p>
-      <a className="venue-text phone-link" href={`tel:${location.venuePhone}`}>
-        {location.venuePhone}
-      </a>
+      {location.venuePhone.length > 0 ? (
+        <a className="venue-text phone-link" href={`tel:${location.venuePhone}`}>
+          {location.venuePhone}
+        </a>
+      ) : null}
 
       <div className="location-cta-row">
         <button
@@ -55,14 +57,14 @@ function LocationSection({ location }: LocationSectionProps) {
           onClick={() => handleOpenExternal(location.naverMapUrl)}
           type="button"
         >
-          Naver Map
+          네이버 지도
         </button>
         <button
           className="outline-button cta"
           onClick={() => handleOpenExternal(location.kakaoNaviUrl)}
           type="button"
         >
-          Kakao Navi
+          카카오 내비
         </button>
       </div>
 
@@ -70,19 +72,19 @@ function LocationSection({ location }: LocationSectionProps) {
         <div className="link-fallback">
           <p>{linkError}</p>
           <button className="outline-button small" onClick={() => void handleCopyAddress()} type="button">
-            Copy Address
+            주소 복사하기
           </button>
         </div>
       ) : null}
 
       <div className="transport-card">
-        <h4>SUBWAY</h4>
+        <h4>지하철</h4>
         {location.subwayLines.map((line) => (
           <p key={line}>{line}</p>
         ))}
       </div>
       <div className="transport-card">
-        <h4>BUS</h4>
+        <h4>버스</h4>
         {location.busLines.map((line) => (
           <p key={line}>{line}</p>
         ))}

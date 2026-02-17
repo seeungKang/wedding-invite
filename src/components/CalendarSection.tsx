@@ -4,7 +4,7 @@ type CalendarSectionProps = {
   calendar: CalendarInfo;
 };
 
-const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
 function CalendarSection({ calendar }: CalendarSectionProps) {
   const firstDay = new Date(calendar.year, calendar.month - 1, 1).getDay();
@@ -17,7 +17,9 @@ function CalendarSection({ calendar }: CalendarSectionProps) {
   return (
     <section className="section calendar">
       <h2 className="month-title">{calendar.monthLabel}</h2>
-      <p className="month-subtitle">{`${calendar.year}. ${String(calendar.month).padStart(2, "0")}. ${String(calendar.highlightedDay).padStart(2, "0")} SAT`}</p>
+      <p className="month-subtitle">
+        {`${calendar.year}. ${String(calendar.month).padStart(2, "0")}. ${String(calendar.highlightedDay).padStart(2, "0")} 토`}
+      </p>
 
       <div className="calendar-grid weekday">
         {weekDays.map((day) => (

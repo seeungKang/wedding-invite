@@ -47,8 +47,8 @@ function Gallery({ items }: GalleryProps) {
   };
 
   return (
-    <section className="section gallery">
-      <h2 className="section-title">Gallery</h2>
+    <section className="section gallery" id="gallery">
+      <h2 className="section-title">갤러리</h2>
       <div className="section-rule" />
 
       <div className="gallery-grid">
@@ -61,11 +61,11 @@ function Gallery({ items }: GalleryProps) {
               key={item.id}
               className="gallery-thumb-button"
               onClick={() => handleOpenViewer(absoluteIndex)}
-              aria-label={`Open image ${absoluteIndex + 1}`}
+              aria-label={`${absoluteIndex + 1}번 사진 보기`}
               type="button"
             >
               {isFailed ? (
-                <div className="gallery-fallback">Image unavailable</div>
+                <div className="gallery-fallback">이미지를 불러오지 못했습니다.</div>
               ) : (
                 <img
                   className="gallery-thumb"
@@ -86,7 +86,7 @@ function Gallery({ items }: GalleryProps) {
           onClick={() => setVisibleCount((currentCount) => currentCount + 6)}
           type="button"
         >
-          View All Photos
+          사진 전체보기
         </button>
       ) : null}
 
@@ -95,27 +95,27 @@ function Gallery({ items }: GalleryProps) {
           <button
             className="viewer-close"
             onClick={handleCloseViewer}
-            aria-label="Close viewer"
+            aria-label="사진 뷰어 닫기"
             type="button"
           >
-            ×
+            닫기
           </button>
           <button
             className="viewer-nav viewer-prev"
             onClick={handlePrevious}
-            aria-label="Previous image"
+            aria-label="이전 사진"
             type="button"
           >
-            ‹
+            이전
           </button>
           <img className="viewer-image" src={activeItem.fullSrc} alt={activeItem.alt} />
           <button
             className="viewer-nav viewer-next"
             onClick={handleNext}
-            aria-label="Next image"
+            aria-label="다음 사진"
             type="button"
           >
-            ›
+            다음
           </button>
           <p className="viewer-index">{`${(viewerIndex ?? 0) + 1} / ${items.length}`}</p>
         </div>

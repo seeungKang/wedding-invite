@@ -36,10 +36,10 @@ function AccountSection({ groups }: AccountSectionProps) {
   const handleCopy = async (item: AccountItem) => {
     try {
       await navigator.clipboard.writeText(item.copyValue);
-      setToastState({ text: "Account number copied.", type: "success" });
+      setToastState({ text: "계좌번호가 복사되었습니다.", type: "success" });
     } catch {
       setToastState({
-        text: "Copy failed. Please press and hold to copy manually.",
+        text: "복사에 실패했습니다. 길게 눌러 복사해 주세요.",
         type: "error",
       });
     }
@@ -50,11 +50,11 @@ function AccountSection({ groups }: AccountSectionProps) {
   return (
     <section className="section accounts" id="account">
       <div className="account-icon" aria-hidden="true">
-        ⌁
+        💳
       </div>
-      <h2 className="section-title">Gift Accounts</h2>
+      <h2 className="section-title">마음 전하실 곳</h2>
       <p className="section-description">
-        Your kind support and thoughtful message are deeply appreciated.
+        소중한 마음으로 보내주시는 축복에 감사드립니다.
       </p>
 
       {groups.map((group) => (
@@ -74,19 +74,19 @@ function AccountSection({ groups }: AccountSectionProps) {
                 >
                   <span className="account-role">{item.roleLabel}</span>
                   <span className="account-owner">{item.name}</span>
-                  <span className="account-chevron">{isOpen ? "⌃" : "⌄"}</span>
+                  <span className="account-chevron">{isOpen ? "▲" : "▼"}</span>
                 </button>
                 {isOpen ? (
                   <div id={`account-panel-${item.id}`} className="account-panel">
                     <p className="account-meta">{item.bankName}</p>
                     <p className="account-number">{item.accountNumber}</p>
-                    <p className="account-meta">{`Holder: ${item.holderName}`}</p>
+                    <p className="account-meta">{`예금주: ${item.holderName}`}</p>
                     <button
                       className="outline-button small"
                       onClick={() => void handleCopy(item)}
                       type="button"
                     >
-                      Copy Account
+                      복사하기
                     </button>
                   </div>
                 ) : null}
@@ -103,7 +103,7 @@ function AccountSection({ groups }: AccountSectionProps) {
         <div className={`toast ${toastState.type}`}>{toastState.text}</div>
       ) : null}
 
-      <p className="sr-only">{`Total accounts: ${allItems.length}`}</p>
+      <p className="sr-only">{`계좌 개수 ${allItems.length}개`}</p>
     </section>
   );
 }
