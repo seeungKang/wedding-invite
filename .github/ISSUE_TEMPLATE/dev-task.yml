@@ -1,0 +1,41 @@
+name: Dev Task
+description: Engineering execution task template
+title: "[Dev] "
+labels: ["development"]
+body:
+  - type: input
+    id: prd_link
+    attributes:
+      label: Linked PRD
+      description: Provide the PRD path or URL.
+      placeholder: docs/planning/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_scope
+    attributes:
+      label: Implementation Scope
+      description: Describe what will be implemented.
+      placeholder: Components, scripts, workflow updates
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_design
+    attributes:
+      label: Technical Design
+      description: Explain architecture and data flow decisions.
+      placeholder: Module split and key tradeoffs
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: quality_gates
+    attributes:
+      label: Quality Gates
+      options:
+        - label: lint passes
+        - label: typecheck passes
+        - label: language check passes
+        - label: build and size check pass

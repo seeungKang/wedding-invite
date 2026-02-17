@@ -1,4 +1,3 @@
-/* 메인 컨테이너 */
 .wedding-container {
   min-height: 100vh;
   display: flex;
@@ -9,34 +8,18 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
-/* 카드 */
 .wedding-card {
   max-width: 600px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
   padding: 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  animation: slideIn 0.6s ease-out;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 갤러리 섹션 */
 .gallery-section {
-  position: relative;
   width: 100%;
   background: linear-gradient(135deg, #c0c0c8 0%, #d0d0d8 100%);
   padding: 20px;
@@ -49,51 +32,34 @@
   border-radius: 20px;
   overflow: hidden;
   background: #e8e8f0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: fadeIn 0.4s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .gallery-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   color: #666;
-  font-size: 24px;
-  width: 48px;
-  height: 48px;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-  font-weight: bold;
+  transition: all 0.2s ease;
 }
 
 .gallery-btn:hover {
-  background: white;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: #fff;
   color: #333;
 }
 
@@ -119,60 +85,26 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .dot.active {
-  background: white;
+  background: #fff;
   width: 28px;
   border-radius: 5px;
 }
 
-.dot:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* 상단 장식 */
-.decoration-top {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px 40px 20px;
-  background: linear-gradient(to bottom, transparent, rgba(192, 192, 200, 0.05));
-}
-
+.decoration-top,
 .decoration-bottom {
   display: flex;
   justify-content: space-around;
-  padding: 20px 40px 30px;
-  background: linear-gradient(to top, transparent, rgba(192, 192, 200, 0.05));
+  padding: 24px 40px 16px;
 }
 
 .flower {
-  width: 30px;
-  height: 30px;
-  opacity: 0.7;
-}
-
-.flower-1::before {
-  content: "❀";
   font-size: 28px;
   color: #a0a0a8;
 }
 
-.flower-2::before {
-  content: "✿";
-  font-size: 28px;
-  color: #b0b0b8;
-}
-
-.flower-3::before {
-  content: "❀";
-  font-size: 28px;
-  color: #a0a0a8;
-}
-
-/* 카드 헤더 */
 .card-header {
   text-align: center;
   padding: 0 40px 20px;
@@ -182,25 +114,24 @@
   font-size: 13px;
   color: #999;
   letter-spacing: 3px;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   text-transform: uppercase;
   font-weight: 300;
 }
 
 .main-title {
-  font-size: 38px;
+  font-size: 36px;
   color: #5a5a5a;
   margin: 0;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
-/* 신랑 신부 섹션 */
 .couple-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 24px;
   padding: 30px 40px;
 }
 
@@ -210,59 +141,49 @@
 }
 
 .person-icon {
-  font-size: 48px;
-  margin-bottom: 8px;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .person h2 {
   font-size: 13px;
   color: #999;
-  margin: 0 0 8px 0;
-  font-weight: 400;
+  margin: 0 0 8px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .person .name {
-  font-size: 26px;
+  font-size: 24px;
   color: #333;
   margin: 0;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .ampersand {
-  font-size: 32px;
+  font-size: 30px;
   color: #a0a0a8;
-  margin: 0 10px;
-  animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-/* 구분선 */
 .divider {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #a0a0a8 20%, #a0a0a8 80%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a0a0a8 20%,
+    #a0a0a8 80%,
+    transparent
+  );
   margin: 0 40px;
 }
 
-/* 식 정보 섹션 */
 .ceremony-section {
-  padding: 40px;
+  padding: 36px 40px;
 }
 
 .ceremony-item {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .ceremony-item:last-child {
@@ -272,31 +193,24 @@
 .ceremony-item h3 {
   font-size: 15px;
   color: #888;
-  margin: 0 0 12px 0;
-  font-weight: 500;
+  margin: 0 0 10px;
   letter-spacing: 1px;
 }
 
-.ceremony-item .date {
-  font-size: 19px;
-  color: #333;
-  margin: 8px 0;
-  font-weight: 600;
-}
-
-.ceremony-item .time,
-.ceremony-item .location,
-.ceremony-item .address {
+.detail-line {
   font-size: 15px;
   color: #666;
   margin: 6px 0;
   line-height: 1.5;
 }
 
-/* 연락처 섹션 */
 .contact-section {
   padding: 30px 40px;
-  background: linear-gradient(135deg, rgba(192, 192, 200, 0.08) 0%, rgba(208, 208, 216, 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 200, 0.08) 0%,
+    rgba(208, 208, 216, 0.08) 100%
+  );
   border-top: 1px solid rgba(192, 192, 200, 0.1);
   border-bottom: 1px solid rgba(192, 192, 200, 0.1);
 }
@@ -304,9 +218,7 @@
 .contact-section h3 {
   font-size: 15px;
   color: #888;
-  margin: 0 0 20px 0;
-  font-weight: 500;
-  letter-spacing: 1px;
+  margin: 0 0 20px;
   text-align: center;
 }
 
@@ -329,35 +241,29 @@
 .contact-item .phone {
   color: #333;
   font-weight: 500;
-  font-size: 14px;
 }
 
-/* 계좌 섹션 */
 .account-section {
-  padding: 40px;
+  padding: 36px 40px;
 }
 
 .account-section h3 {
   font-size: 15px;
   color: #888;
-  margin: 0 0 25px 0;
-  font-weight: 500;
-  letter-spacing: 1px;
+  margin: 0 0 20px;
   text-align: center;
 }
 
 .account-card {
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, rgba(192, 192, 200, 0.05) 0%, rgba(208, 208, 216, 0.05) 100%);
+  margin-bottom: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 200, 0.05) 0%,
+    rgba(208, 208, 216, 0.05) 100%
+  );
   border: 1px solid rgba(192, 192, 200, 0.15);
-  border-radius: 15px;
-  padding: 20px;
-  transition: all 0.3s ease;
-}
-
-.account-card:hover {
-  border-color: rgba(192, 192, 200, 0.3);
-  box-shadow: 0 8px 20px rgba(192, 192, 200, 0.1);
+  border-radius: 14px;
+  padding: 18px;
 }
 
 .account-item {
@@ -376,7 +282,6 @@
   font-size: 13px;
   color: #888;
   margin: 0;
-  font-weight: 500;
 }
 
 .account-name {
@@ -391,77 +296,44 @@
   color: #666;
   margin: 0;
   font-family: "Courier New", monospace;
-  letter-spacing: 0.5px;
 }
 
 .copy-btn {
   align-self: flex-start;
   background: linear-gradient(135deg, #a0a0a8 0%, #b0b0b8 100%);
   border: none;
-  color: white;
+  color: #fff;
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 8px;
 }
 
-.copy-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(160, 160, 168, 0.3);
-}
-
-.copy-btn:active {
-  transform: translateY(0);
-}
-
-/* 메시지 섹션 */
 .message-section {
   text-align: center;
   color: #999;
   font-size: 14px;
   line-height: 1.8;
   padding: 20px 40px;
-  border-top: 1px solid #e8d5c4;
 }
 
 .message-section p {
   margin: 6px 0;
 }
 
-/* 반응형 */
 @media (max-width: 600px) {
   .wedding-card {
-    border-radius: 15px;
+    border-radius: 16px;
   }
 
   .gallery-section {
-    padding: 15px;
-  }
-
-  .gallery-container {
-    border-radius: 15px;
+    padding: 14px;
   }
 
   .gallery-btn {
     width: 38px;
     height: 38px;
-    font-size: 20px;
-  }
-
-  .gallery-btn.prev {
-    left: 5px;
-  }
-
-  .gallery-btn.next {
-    right: 5px;
-  }
-
-  .decoration-top,
-  .decoration-bottom {
-    padding: 20px 20px;
+    font-size: 18px;
   }
 
   .card-header {
@@ -473,16 +345,8 @@
   }
 
   .couple-section {
-    gap: 15px;
-    padding: 25px 20px;
-  }
-
-  .person-icon {
-    font-size: 40px;
-  }
-
-  .person .name {
-    font-size: 22px;
+    gap: 14px;
+    padding: 24px 20px;
   }
 
   .divider {
@@ -491,11 +355,7 @@
 
   .ceremony-section,
   .account-section {
-    padding: 30px 20px;
-  }
-
-  .ceremony-item .date {
-    font-size: 17px;
+    padding: 28px 20px;
   }
 
   .contact-item {
@@ -507,12 +367,8 @@
     text-align: center;
   }
 
-  .contact-section {
-    padding: 20px;
-  }
-
+  .contact-section,
   .message-section {
-    padding: 15px 20px;
-    font-size: 13px;
+    padding: 20px;
   }
 }

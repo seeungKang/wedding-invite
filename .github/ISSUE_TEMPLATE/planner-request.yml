@@ -1,0 +1,40 @@
+name: Planner Request
+description: Product planning request template
+title: "[Planner] "
+labels: ["planning"]
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: Background
+      description: Describe why this request matters.
+      placeholder: Current problem and context
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Define what should be achieved.
+      placeholder: Target outcome and success criteria
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Clarify in-scope and out-of-scope items.
+      placeholder: In scope / Out of scope
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Add technical or timeline constraints.
+      placeholder: Performance, size budget, dates
+    validations:
+      required: false
