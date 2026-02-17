@@ -1,62 +1,76 @@
 import "./App.css";
 
 import AccountSection from "./components/AccountSection";
-import CeremonyInfo from "./components/CeremonyInfo";
-import ContactInfo from "./components/ContactInfo";
+import CalendarSection from "./components/CalendarSection";
 import FooterMessage from "./components/FooterMessage";
 import Gallery from "./components/Gallery";
+import LocationSection from "./components/LocationSection";
 import {
-  accountItems,
-  ceremonyItems,
-  contactItems,
-  galleryImages,
-  inviteMessage,
+  accountGroups,
+  calendarInfo,
+  eventInfo,
+  footerContent,
+  galleryItems,
+  heroContent,
+  introContent,
+  locationInfo,
 } from "./constants/weddingContent";
 
 function App() {
   return (
-    <div className="wedding-container">
-      <div className="wedding-card">
-        <Gallery images={galleryImages} />
-
-        <div className="decoration-top">
-          <div className="flower flower-1">*</div>
-          <div className="flower flower-2">+</div>
-          <div className="flower flower-3">*</div>
-        </div>
-
-        <header className="card-header">
-          <p className="subtitle">We are getting married</p>
-          <h1 className="main-title">Wedding Invitation</h1>
-        </header>
-
-        <section className="couple-section">
-          <div className="person groom">
-            <div className="person-icon">G</div>
-            <h2>Groom</h2>
-            <p className="name">Seung Kang</p>
-          </div>
-          <div className="ampersand">&</div>
-          <div className="person bride">
-            <div className="person-icon">B</div>
-            <h2>Bride</h2>
-            <p className="name">Su Kim</p>
+    <div className="wedding-app">
+      <main className="wedding-shell">
+        <section className="hero">
+          <img
+            className="hero-image"
+            src={galleryItems[0]?.fullSrc}
+            alt="Wedding cover"
+            fetchPriority="high"
+          />
+          <div className="hero-overlay" />
+          <div className="hero-content">
+            <p className="hero-eyebrow">{heroContent.eyebrow}</p>
+            <h1>{heroContent.title}</h1>
+            <p className="hero-names">{heroContent.coupleNames}</p>
+            <div className="hero-line" />
+            <p>{heroContent.eventSummary}</p>
           </div>
         </section>
 
-        <div className="divider" />
+        <section className="section invitation">
+          <div className="intro-heart">♥</div>
+          <h2 className="section-title">{introContent.sectionTitle}</h2>
+          <div className="section-rule" />
+          <div className="intro-copy">
+            {introContent.lines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+          <div className="intro-names">
+            <p>
+              <span>{introContent.groomLabel}</span>
+              <strong>{introContent.groomName}</strong>
+            </p>
+            <p>
+              <span>{introContent.brideLabel}</span>
+              <strong>{introContent.brideName}</strong>
+            </p>
+          </div>
+        </section>
 
-        <CeremonyInfo items={ceremonyItems} />
-        <ContactInfo contacts={contactItems} />
-        <AccountSection accounts={accountItems} />
-        <FooterMessage messageLines={inviteMessage} />
+        <CalendarSection calendar={calendarInfo} />
+        <Gallery items={galleryItems} />
+        <LocationSection location={locationInfo} />
+        <AccountSection groups={accountGroups} />
 
-        <div className="decoration-bottom">
-          <div className="flower flower-1">*</div>
-          <div className="flower flower-2">+</div>
-          <div className="flower flower-3">*</div>
-        </div>
-      </div>
+        <section className="section event-meta">
+          <p>{eventInfo.eventDateLabel}</p>
+          <p>{eventInfo.eventTime}</p>
+          <p>{eventInfo.venueName}</p>
+        </section>
+
+        <FooterMessage {...footerContent} />
+      </main>
     </div>
   );
 }

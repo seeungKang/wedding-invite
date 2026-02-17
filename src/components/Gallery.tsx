@@ -1,60 +1,125 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-import type { GalleryImage } from "../types/wedding";
+import type { GalleryItem } from "../types/wedding";
 
 type GalleryProps = {
-  images: GalleryImage[];
+  items: GalleryItem[];
 };
 
-function Gallery({ images }: GalleryProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+function Gallery({ items }: GalleryProps) {
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [failedImageIds, setFailedImageIds] = useState<Set<string>>(new Set());
 
-  const handleNextImage = () => {
-    setCurrentImageIndex((previousIndex) => (previousIndex + 1) % images.length);
+  const hasMoreItems = visibleCount < items.length;
+  const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
+  const indexedItem = viewerIndex !== null ? items[viewerIndex] : undefined;
+  const activeItem = indexedItem ?? null;
+
+  const handleImageError = (id: string) => {
+    setFailedImageIds((previous) => new Set(previous).add(id));
   };
 
-  const handlePreviousImage = () => {
-    setCurrentImageIndex(
-      (previousIndex) => (previousIndex - 1 + images.length) % images.length,
-    );
+  const handleOpenViewer = (index: number) => {
+    setViewerIndex(index);
+  };
+
+  const handleCloseViewer = () => {
+    setViewerIndex(null);
+  };
+
+  const handlePrevious = () => {
+    setViewerIndex((previous) => {
+      if (previous === null) {
+        return previous;
+      }
+      return (previous - 1 + items.length) % items.length;
+    });
+  };
+
+  const handleNext = () => {
+    setViewerIndex((previous) => {
+      if (previous === null) {
+        return previous;
+      }
+      return (previous + 1) % items.length;
+    });
   };
 
   return (
-    <section className="gallery-section">
-      <div className="gallery-container">
-        <img
-          src={images[currentImageIndex]?.src}
-          alt={images[currentImageIndex]?.alt}
-          className="gallery-image"
-        />
-        <button
-          className="gallery-btn prev"
-          onClick={handlePreviousImage}
-          aria-label="Previous image"
-          type="button"
-        >
-          {"<"}
-        </button>
-        <button
-          className="gallery-btn next"
-          onClick={handleNextImage}
-          aria-label="Next image"
-          type="button"
-        >
-          {">"}
-        </button>
+    <section className="section gallery">
+      <h2 className="section-title">Gallery</h2>
+      <div className="section-rule" />
+
+      <div className="gallery-grid">
+        {visibleItems.map((item, index) => {
+          const isFailed = failedImageIds.has(item.id);
+          const absoluteIndex = index;
+
+          return (
+            <button
+              key={item.id}
+              className="gallery-thumb-button"
+              onClick={() => handleOpenViewer(absoluteIndex)}
+              aria-label={`Open image ${absoluteIndex + 1}`}
+              type="button"
+            >
+              {isFailed ? (
+                <div className="gallery-fallback">Image unavailable</div>
+              ) : (
+                <img
+                  className="gallery-thumb"
+                  src={item.thumbSrc}
+                  alt={item.alt}
+                  loading="lazy"
+                  onError={() => handleImageError(item.id)}
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
-      <div className="gallery-dots">
-        {images.map((image, index) => (
+
+      {hasMoreItems ? (
+        <button
+          className="outline-button"
+          onClick={() => setVisibleCount((currentCount) => currentCount + 6)}
+          type="button"
+        >
+          View All Photos
+        </button>
+      ) : null}
+
+      {activeItem !== null ? (
+        <div className="viewer-overlay" role="dialog" aria-modal="true">
           <button
-            key={image.id}
-            className={`dot ${index === currentImageIndex ? "active" : ""}`}
-            onClick={() => setCurrentImageIndex(index)}
-            aria-label={`Go to image ${index + 1}`}
+            className="viewer-close"
+            onClick={handleCloseViewer}
+            aria-label="Close viewer"
             type="button"
-          />
-        ))}
-      </div>
+          >
+            ×
+          </button>
+          <button
+            className="viewer-nav viewer-prev"
+            onClick={handlePrevious}
+            aria-label="Previous image"
+            type="button"
+          >
+            ‹
+          </button>
+          <img className="viewer-image" src={activeItem.fullSrc} alt={activeItem.alt} />
+          <button
+            className="viewer-nav viewer-next"
+            onClick={handleNext}
+            aria-label="Next image"
+            type="button"
+          >
+            ›
+          </button>
+          <p className="viewer-index">{`${(viewerIndex ?? 0) + 1} / ${items.length}`}</p>
+        </div>
+      ) : null}
     </section>
   );
 }

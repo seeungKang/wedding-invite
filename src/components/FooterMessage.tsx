@@ -1,13 +1,17 @@
-type FooterMessageProps = {
-  messageLines: string[];
-};
+import type { FooterContent } from "../types/wedding";
 
-function FooterMessage({ messageLines }: FooterMessageProps) {
+type FooterMessageProps = FooterContent;
+
+function FooterMessage({ tagline, copyright }: FooterMessageProps) {
   return (
-    <section className="message-section">
-      {messageLines.map((line) => (
-        <p key={line}>{line}</p>
-      ))}
+    <section className="section footer">
+      <p className="footer-tagline">{tagline}</p>
+      <div className="footer-dots">
+        <span />
+        <span />
+        <span />
+      </div>
+      <p className="footer-copy">{copyright}</p>
     </section>
   );
 }
