@@ -1308,6 +1308,42 @@
   padding-top: 26px;
 }
 
+.kakao-share {
+  padding-top: 28px;
+  padding-bottom: 12px;
+}
+
+.kakao-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  border-radius: 12px;
+  background: #fee500;
+  color: #191919;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.kakao-share-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.kakao-share-button:focus-visible {
+  outline: 3px solid #191919;
+  outline-offset: 3px;
+}
+
+.kakao-share-error {
+  margin-top: 10px;
+  color: var(--color-red);
+  text-align: center;
+  font-size: 0.88rem;
+}
+
 .footer {
   text-align: center;
   color: #c4cbd5;
