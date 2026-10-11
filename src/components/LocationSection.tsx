@@ -13,21 +13,21 @@ function LocationSection({ location }: LocationSectionProps) {
     try {
       const openedWindow = window.open(url, "_blank", "noopener,noreferrer");
       if (openedWindow === null) {
-        setLinkError("지도 앱을 열 수 없습니다. 주소를 복사해 주세요.");
+        setLinkError("주소 복사도 가능해요!");
       } else {
         setLinkError(null);
       }
     } catch {
-      setLinkError("지도 앱을 열 수 없습니다. 주소를 복사해 주세요.");
+      setLinkError("주소 복사도 가능해요!");
     }
   };
 
   const handleCopyAddress = async () => {
     try {
       await navigator.clipboard.writeText(location.venueAddress);
-      setLinkError("주소가 복사되었습니다.");
+      setLinkError("주소가 복사됐어요!");
     } catch {
-      setLinkError("주소 복사에 실패했습니다. 수동으로 복사해 주세요.");
+      setLinkError("주소를 길게 눌러 복사해 주세요.");
     }
   };
 

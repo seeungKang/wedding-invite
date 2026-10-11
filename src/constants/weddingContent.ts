@@ -53,20 +53,23 @@ export const calendarInfo: CalendarInfo = {
 };
 
 export const galleryItems: GalleryItem[] = [
-  { id: "photo-01", thumbSrc: `${baseUrl}images/dsc03004.webp`, fullSrc: `${baseUrl}images/dsc03004.webp`, alt: "웨딩 사진 1" },
-  { id: "photo-02", thumbSrc: `${baseUrl}images/dsc03014.webp`, fullSrc: `${baseUrl}images/dsc03014.webp`, alt: "웨딩 사진 2" },
-  { id: "photo-03", thumbSrc: `${baseUrl}images/dsc03025.webp`, fullSrc: `${baseUrl}images/dsc03025.webp`, alt: "웨딩 사진 3" },
-  { id: "photo-04", thumbSrc: `${baseUrl}images/dsc03034.webp`, fullSrc: `${baseUrl}images/dsc03034.webp`, alt: "웨딩 사진 4" },
-  { id: "photo-05", thumbSrc: `${baseUrl}images/dsc03037.webp`, fullSrc: `${baseUrl}images/dsc03037.webp`, alt: "웨딩 사진 5" },
-  { id: "photo-06", thumbSrc: `${baseUrl}images/dsc03081.webp`, fullSrc: `${baseUrl}images/dsc03081.webp`, alt: "웨딩 사진 6" },
-  { id: "photo-07", thumbSrc: `${baseUrl}images/dsc03094.webp`, fullSrc: `${baseUrl}images/dsc03094.webp`, alt: "웨딩 사진 7" },
-  { id: "photo-08", thumbSrc: `${baseUrl}images/dsc03105.webp`, fullSrc: `${baseUrl}images/dsc03105.webp`, alt: "웨딩 사진 8" },
-  { id: "photo-09", thumbSrc: `${baseUrl}images/dsc03114.webp`, fullSrc: `${baseUrl}images/dsc03114.webp`, alt: "웨딩 사진 9" },
-  { id: "photo-10", thumbSrc: `${baseUrl}images/dsc03116.webp`, fullSrc: `${baseUrl}images/dsc03116.webp`, alt: "웨딩 사진 10" },
+  { id: "photo-01", thumbSrc: `${baseUrl}images/selected-01-thumb.webp`, fullSrc: `${baseUrl}images/selected-01.webp`, alt: "Wedding photo 1" },
+  { id: "photo-02", thumbSrc: `${baseUrl}images/selected-03-thumb.webp`, fullSrc: `${baseUrl}images/selected-03.webp`, alt: "Wedding photo 2" },
+  { id: "photo-03", thumbSrc: `${baseUrl}images/selected-11-thumb.webp`, fullSrc: `${baseUrl}images/selected-11.webp`, alt: "Wedding photo 3" },
+  { id: "photo-04", thumbSrc: `${baseUrl}images/selected-06-thumb.webp`, fullSrc: `${baseUrl}images/selected-06.webp`, alt: "Wedding photo 4" },
+  { id: "photo-05", thumbSrc: `${baseUrl}images/selected-07-thumb.webp`, fullSrc: `${baseUrl}images/selected-07.webp`, alt: "Wedding photo 5" },
+  { id: "photo-06", thumbSrc: `${baseUrl}images/selected-08-thumb.webp`, fullSrc: `${baseUrl}images/selected-08.webp`, alt: "Wedding photo 6" },
+  { id: "photo-07", thumbSrc: `${baseUrl}images/selected-12-thumb.webp`, fullSrc: `${baseUrl}images/selected-12.webp`, alt: "Wedding photo 7" },
+  { id: "photo-08", thumbSrc: `${baseUrl}images/selected-04-thumb.webp`, fullSrc: `${baseUrl}images/selected-04.webp`, alt: "Wedding photo 8" },
+  { id: "photo-09", thumbSrc: `${baseUrl}images/selected-05-thumb.webp`, fullSrc: `${baseUrl}images/selected-05.webp`, alt: "Wedding photo 9" },
+  { id: "photo-10", thumbSrc: `${baseUrl}images/selected-10-thumb.webp`, fullSrc: `${baseUrl}images/selected-10.webp`, alt: "Wedding photo 10" },
+  { id: "photo-11", thumbSrc: `${baseUrl}images/selected-02-thumb.webp`, fullSrc: `${baseUrl}images/selected-02.webp`, alt: "Wedding photo 11" },
+  { id: "photo-12", thumbSrc: `${baseUrl}images/selected-09-thumb.webp`, fullSrc: `${baseUrl}images/selected-09.webp`, alt: "Wedding photo 12" },
+  { id: "photo-13", thumbSrc: `${baseUrl}images/selected-13-thumb.webp`, fullSrc: `${baseUrl}images/selected-13.webp`, alt: "Wedding photo 13" },
 ];
 
 export const locationInfo: LocationInfo = {
-  mapPreviewSrc: `${baseUrl}images/dsc03037.webp`,
+  mapPreviewSrc: `${baseUrl}images/selected-01.webp`,
   mapPreviewAlt: "예식장 지도 미리보기",
   venueName: eventInfo.venueName,
   venueAddress: eventInfo.venueAddress,
