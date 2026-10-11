@@ -6,6 +6,7 @@ import AccountSection from "./components/AccountSection";
 import CalendarSection from "./components/CalendarSection";
 import FooterMessage from "./components/FooterMessage";
 import Gallery from "./components/Gallery";
+import KakaoShareButton from "./components/KakaoShareButton";
 import LocationSection from "./components/LocationSection";
 import {
   accountGroups,
@@ -196,6 +197,7 @@ function App() {
           <p>{`${eventInfo.venueName} · ${eventInfo.venueAddress}`}</p>
         </section>
 
+        <KakaoShareButton />
         <FooterMessage {...footerContent} />
       </main>
 
