@@ -16,6 +16,8 @@ function CalendarSection({ calendar }: CalendarSectionProps) {
 
   return (
     <section className="section calendar">
+      <div className="winter-calendar-card">
+      <p className="winter-eyebrow">A DAY TO REMEMBER</p>
       <h2 className="month-title">{calendar.monthLabel}</h2>
       <p className="month-subtitle">
         {`${calendar.year}. ${String(calendar.month).padStart(2, "0")}. ${String(calendar.highlightedDay).padStart(2, "0")} 토`}
@@ -39,13 +41,14 @@ function CalendarSection({ calendar }: CalendarSectionProps) {
               key={`day-${day}`}
               className={`day-cell ${isHighlighted ? "highlighted" : ""}`}
             >
-              {day}
+              <span className="day-number">{day}</span>
             </span>
           );
         })}
       </div>
 
       <p className="calendar-caption">{calendar.caption}</p>
+      </div>
     </section>
   );
 }

@@ -39,6 +39,8 @@ export type GalleryItem = {
 };
 
 export type LocationInfo = {
+  latitude: number;
+  longitude: number;
   mapPreviewSrc: string;
   mapPreviewAlt: string;
   venueName: string;
