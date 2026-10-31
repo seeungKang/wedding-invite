@@ -26,16 +26,6 @@ type LoaderPhase = "loading" | "settling" | "done";
 const MINIMUM_LOADING_MS = 3000;
 const fireworkBursts = Array.from({ length: 4 }, (_, index) => index);
 const floatingHearts = Array.from({ length: 8 }, (_, index) => index);
-const christmasDecorationPositions = [
-  "top",
-  "top-right",
-  "right",
-  "bottom-right",
-  "bottom",
-  "bottom-left",
-  "left",
-  "top-left",
-];
 
 function scrollToPageTop() {
   window.scrollTo(0, 0);
@@ -59,8 +49,13 @@ function wait(ms: number) {
 }
 
 function App() {
+  const previewLoadingScreen =
+    import.meta.env.DEV && new URLSearchParams(window.location.search).has("previewLoader");
   const handDrawnCoupleSrc = `${import.meta.env.BASE_URL}images/hand-drawn-couple.png`;
+  const loadingTopSrc = `${import.meta.env.BASE_URL}images/loading-top.avif`;
+  const loadingBottomSrc = `${import.meta.env.BASE_URL}images/loading-bottom.avif`;
   const introIllustrationRef = useRef<HTMLImageElement | null>(null);
+  const loadingFigureRef = useRef<HTMLDivElement | null>(null);
   const [loaderPhase, setLoaderPhase] = useState<LoaderPhase>("loading");
   const [loaderTargetStyle, setLoaderTargetStyle] = useState<CSSProperties | undefined>();
 
@@ -83,14 +78,20 @@ function App() {
       Array.from(
         new Set([
           handDrawnCoupleSrc,
+          loadingTopSrc,
+          loadingBottomSrc,
           locationInfo.mapPreviewSrc,
           ...galleryItems.flatMap((item) => [item.thumbSrc, item.fullSrc]),
         ]),
       ),
-    [handDrawnCoupleSrc],
+    [handDrawnCoupleSrc, loadingTopSrc, loadingBottomSrc],
   );
 
   useEffect(() => {
+    if (previewLoadingScreen) {
+      return;
+    }
+
     let isCancelled = false;
     const originalBodyOverflow = document.body.style.overflow;
 
@@ -113,14 +114,15 @@ function App() {
         scrollToPageTop();
 
         const targetRect = introIllustrationRef.current?.getBoundingClientRect();
+        const loadingFigureRect = loadingFigureRef.current?.getBoundingClientRect();
         const viewportCenterX = window.innerWidth / 2;
         const viewportCenterY = window.innerHeight / 2;
 
-        if (targetRect !== undefined) {
+        if (targetRect !== undefined && loadingFigureRect !== undefined) {
           setLoaderTargetStyle({
             "--loader-target-x": `${targetRect.left + targetRect.width / 2 - viewportCenterX}px`,
             "--loader-target-y": `${targetRect.top + targetRect.height / 2 - viewportCenterY}px`,
-            "--loader-target-scale": targetRect.width / 180,
+            "--loader-target-scale": targetRect.width / loadingFigureRect.width,
           } as CSSProperties);
         }
 
@@ -138,7 +140,7 @@ function App() {
       isCancelled = true;
       document.body.style.overflow = originalBodyOverflow;
     };
-  }, [preloadUrls]);
+  }, [preloadUrls, previewLoadingScreen]);
 
   return (
     <div className={`wedding-app wedding-app--${loaderPhase}`}>
@@ -203,23 +205,9 @@ function App() {
 
       {loaderPhase !== "done" ? (
         <div className={`loading-screen loading-screen--${loaderPhase}`} aria-hidden="true">
-          <div className="christmas-frame">
-            {christmasDecorationPositions.map((position) => (
-              <div
-                key={position}
-                className={`christmas-decoration christmas-decoration--${position}`}
-              >
-                <span className="christmas-line" />
-                <span className="christmas-leaf christmas-leaf--1" />
-                <span className="christmas-leaf christmas-leaf--2" />
-                <span className="christmas-leaf christmas-leaf--3" />
-                <span className="christmas-berry christmas-berry--1" />
-                <span className="christmas-berry christmas-berry--2" />
-                <span className="christmas-bulb christmas-bulb--1" />
-                <span className="christmas-bulb christmas-bulb--2" />
-                <span className="christmas-star">✦</span>
-              </div>
-            ))}
+          <div className="loading-botanical-frame">
+            <img className="loading-botanical loading-botanical--top" src={loadingTopSrc} alt="" />
+            <img className="loading-botanical loading-botanical--bottom" src={loadingBottomSrc} alt="" />
           </div>
           <div className="loading-celebration">
             {fireworkBursts.map((burst) => (
@@ -234,7 +222,7 @@ function App() {
               </span>
             ))}
           </div>
-          <div className="loading-figure" style={loaderTargetStyle}>
+          <div ref={loadingFigureRef} className="loading-figure" style={loaderTargetStyle}>
             <img className="loading-illustration" src={handDrawnCoupleSrc} alt="" />
           </div>
         </div>
