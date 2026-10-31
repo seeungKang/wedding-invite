@@ -84,7 +84,7 @@ function KakaoShareButton() {
         objectType: "feed",
         content: {
           title: "세응 ♡ 하얀 결혼식에 초대합니다",
-          description: "2026년 12월 19일 오후 1시 · 네이버 1784 스카이홀",
+          description: "2026년 12월 19일 오후 1시 · 네이버 1784 28층 스카이홀",
           imageUrl: IMAGE_URL,
           imageWidth: 967,
           imageHeight: 1450,

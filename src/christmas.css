@@ -1,0 +1,494 @@
+:root {
+  --color-bg: #eae8df;
+  --color-surface: #faf7ef;
+  --color-text: #263e32;
+  --color-muted: #66695e;
+  --color-green: #214c3a;
+  --color-red: #923b43;
+  --color-gold: #b4975f;
+  --line: #ded8c8;
+}
+
+.wedding-shell {
+  background: var(--color-surface);
+  box-shadow: 0 0 70px #293e3010;
+}
+
+.winter-sprig {
+  display: block;
+  color: var(--color-green);
+  flex: none;
+}
+
+.hero {
+  padding-top: 0;
+  border-top: 0;
+  background: var(--color-surface);
+}
+
+.winter-cover-heading {
+  text-align: center;
+  padding: 0 24px 26px;
+}
+
+.winter-eyebrow {
+  color: var(--color-red);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-align: center;
+}
+
+.cover-sprig {
+  width: 128px;
+  height: auto;
+  margin: 14px auto 0;
+}
+
+.hero-handwriting {
+  position: static;
+  width: min(270px, 80%);
+  margin: 0 auto;
+  color: var(--color-green);
+}
+
+.hero-handwriting svg {
+  font-size: 79px;
+}
+
+.winter-cover-caption {
+  margin-top: 5px;
+  color: #6f705f;
+  font-family: var(--font-hand);
+  font-size: 0.73rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-photo {
+  margin: 0;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+.hero-image {
+  aspect-ratio: 3 / 4;
+  object-position: center 58%;
+}
+
+.hero-sky-date {
+  position: absolute;
+  top: 36px;
+  inset-inline: 20px;
+  color: #fffaf0;
+  text-align: center;
+  text-shadow: 0 1px 8px #214c3a24;
+}
+
+.hero-sky-date-number {
+  font-family: Georgia, "Noto Serif KR", serif;
+  font-size: clamp(1.35rem, 5.9vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.hero-sky-date-time {
+  margin-top: 11px;
+  font-family: "Noto Serif KR", serif;
+  font-size: 0.73rem;
+  letter-spacing: 0.09em;
+}
+
+.hero-sky-date-time span {
+  margin-inline: 7px;
+}
+
+.hero-lettering-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0 16px 14px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 54%;
+  background: linear-gradient(transparent, #faf7efd9 45%, var(--color-surface) 91%);
+  pointer-events: none;
+}
+
+.wedding-lettering.wedding-lettering--poster {
+  width: 100%;
+  max-width: 480px;
+  transform: none;
+}
+
+.wedding-lettering--poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.poster-word-reveal {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: poster-word-reveal var(--word-duration) linear var(--word-delay) both;
+  animation-play-state: paused;
+}
+
+@keyframes poster-word-reveal {
+  to { transform: scaleX(1); }
+}
+
+.wedding-app--done .lettering-ready .poster-word-reveal,
+.wedding-app--done .lettering-ready .poster-swash-reveal,
+.wedding-app--done .lettering-ready .poster-decoration-layer,
+.wedding-app--done .lettering-ready .poster-underline-layer {
+  animation-play-state: running;
+}
+
+.poster-swash-reveal {
+  opacity: 0;
+  animation: poster-ink-finish 0.14s linear var(--swash-delay) both;
+  animation-play-state: paused;
+}
+.poster-decoration-layer {
+  opacity: 0;
+  animation: poster-ink-finish 0.5s ease-out 3.5s forwards;
+  animation-play-state: paused;
+}
+
+.poster-underline-layer {
+  clip-path: inset(0 100% 0 0);
+  animation: poster-underline-reveal 0.7s ease-out 2.8s both;
+  animation-play-state: paused;
+}
+
+@keyframes poster-underline-reveal {
+  to { clip-path: inset(0); }
+}
+
+@keyframes poster-ink-finish {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-lettering--poster .poster-word-reveal { animation: none; transform: scaleX(1); }
+  .wedding-lettering--poster .poster-swash-reveal { animation: none; opacity: 1; }
+
+  .wedding-lettering--poster .poster-decoration-layer { animation: none; opacity: 1; }
+  .wedding-lettering--poster .poster-underline-layer { animation: none; clip-path: none; }
+}
+
+.hero-lettering-overlay .winter-eyebrow {
+  font-size: 0.53rem;
+  letter-spacing: 0.24em;
+  margin-bottom: 8px;
+}
+
+.wedding-lettering {
+  width: 88%;
+  max-width: 360px;
+  margin: 0 auto;
+  color: var(--color-red);
+  transform: rotate(-7deg);
+}
+
+.wedding-lettering svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.wedding-lettering:not(.wedding-lettering--poster) path {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: wedding-pen 0.42s ease-out var(--pen-delay) both;
+  animation-play-state: paused;
+}
+
+.wedding-app--done .wedding-lettering:not(.wedding-lettering--poster) path {
+  animation-play-state: running;
+}
+
+@keyframes wedding-pen {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-lettering path { animation: none; stroke-dashoffset: 0; }
+}
+
+.cover-couple-names {
+  font-family: var(--font-hand);
+  font-size: 1.23rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+
+.cover-couple-names span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.65rem;
+  color: var(--color-muted);
+  letter-spacing: 0;
+  margin: 0 10px;
+}
+
+.hero-photo-names {
+  color: #234936;
+  font-size: clamp(0.85rem, 3.4vw, 1.1rem);
+  letter-spacing: 0.09em;
+}
+
+.hero-content {
+  padding: 22px 20px 54px;
+}
+
+.winter-date-mark {
+  color: var(--color-red);
+  font-family: Georgia, serif;
+  font-size: 1.65rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.winter-date-mark span {
+  color: var(--color-gold);
+  font-size: 0.62rem;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.hero-summary {
+  color: var(--color-green);
+  font-family: var(--font-hand);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.winter-venue {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  margin-top: 4px;
+}
+
+.section-title {
+  color: var(--color-green);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.section-rule {
+  width: 24px;
+  background: var(--color-gold);
+  margin-top: 14px;
+}
+
+.invitation, .gallery, .accounts, .location, .event-meta, .kakao-share {
+  background: var(--color-surface);
+}
+
+.invitation {
+  padding-top: 52px;
+  padding-bottom: 64px;
+  border-top: 0;
+}
+
+.section-sprig {
+  width: 82px;
+  height: auto;
+  margin: 0 auto 16px;
+}
+
+.intro-illustration {
+  filter: none;
+}
+
+.intro-copy {
+  color: #62665a;
+  font-size: 0.98rem;
+  line-height: 2;
+}
+
+.intro-names span {
+  color: #6b7063;
+}
+
+.intro-names strong, .venue-title, .account-owner, .account-number {
+  color: var(--color-green);
+}
+
+.venue-title {
+  font-size: clamp(1.12rem, 4.5vw, 1.4rem);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.venue-access-note {
+  margin: 20px auto 24px;
+  color: var(--color-green);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.95;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.venue-access-note strong {
+  color: var(--color-red);
+  font-weight: 600;
+}
+
+.location-cta-row .cta {
+  font-size: clamp(0.7rem, 3vw, 0.88rem);
+  white-space: nowrap;
+}
+
+.calendar {
+  padding: 40px 24px;
+  background: #f0f0e7;
+}
+
+.winter-calendar-card {
+  padding: 26px 20px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.winter-calendar-card .winter-eyebrow {
+  color: #8e7547;
+  font-size: 0.57rem;
+  margin-bottom: 13px;
+}
+
+.month-title {
+  color: var(--color-green);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.month-subtitle {
+  color: #6c7064;
+  font-size: 0.8rem;
+}
+
+.calendar-grid {
+  gap: 8px 2px;
+}
+
+.calendar-grid.weekday {
+  color: #74796c;
+}
+
+.day-cell {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 0.8rem;
+  color: var(--color-green);
+  justify-self: center;
+}
+
+.day-cell.highlighted {
+  position: relative;
+  background: var(--color-red);
+  color: #fffaf0;
+  border: 0;
+  outline: 0;
+}
+
+.day-cell.highlighted::after {
+  content: none;
+  position: absolute;
+  right: -9px;
+  top: -11px;
+  color: #af8b43;
+  font-size: 0.65rem;
+}
+
+.calendar-caption {
+  font-family: var(--font-hand);
+  font-size: 0.77rem;
+  line-height: 1.9;
+  word-break: keep-all;
+  text-wrap: balance;
+}
+
+.gallery, .location, .accounts {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.account-group-card {
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+.outline-button {
+  border-color: #d7d0bf;
+  color: var(--color-green);
+  background: #fffdf740;
+}
+
+.footer {
+  background: var(--color-green);
+  padding: 38px 24px 30px;
+  color: #e0e5d5;
+  border-top: 4px solid #a78b54;
+}
+
+.footer-sprig {
+  width: 112px;
+  height: auto;
+  color: #c5d3b6;
+  margin: 0 auto 22px;
+}
+
+.winter-footer-message {
+  color: #fff9e9;
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.footer-tagline {
+  color: #d6c294;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  margin-top: 20px;
+}
+
+.footer-dots {
+  margin: 18px 0;
+}
+
+.footer-dots span {
+  background: var(--color-gold);
+}
+
+.footer-copy {
+  color: #c8d2bd;
+  font-size: 0.65rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 360px) {
+  .hero-photo { margin-inline: 0; }
+  .winter-cover-caption { font-size: 0.68rem; }
+  .intro-copy { font-size: 0.88rem; }
+  .winter-calendar-card { padding-inline: 14px; }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+  <defs>
+    <path id="heart" d="M0 7C-12-7-21 5-14 15L0 28L14 15C21 5 12-7 0 7Z"/>
+  </defs>
+  <g fill="#214c3a" stroke="#214c3a" stroke-width="2">
+    <path d="M213 228L174 232L161 245L150 237L111 243L137 218L139 204L157 207L175 193L184 208Z"/>
+    <path d="M216 224L191 196L180 194L188 180L192 153L207 172L220 176L214 191L228 215Z"/>
+  </g>
+  <g fill="none" stroke="#b4975f" stroke-width="2">
+    <path d="M123 237L206 221M155 232L143 223M171 226L172 210M211 216L197 166M204 193L215 185"/>
+  </g>
+  <g fill="#a42d39">
+    <circle cx="221" cy="221" r="10"/><circle cx="243" cy="224" r="9"/>
+    <circle cx="232" cy="244" r="10"/><circle cx="211" cy="246" r="9"/>
+    <circle cx="194" cy="268" r="7"/>
+    <use href="#heart" transform="translate(910 317) scale(.85)"/>
+    <use href="#heart" transform="translate(1166 365) scale(.78)"/>
+    <use href="#heart" transform="translate(1177 423) scale(.6)"/>
+  </g>
+  <g stroke="#b4975f" stroke-width="4" fill="none" stroke-linecap="round">
+    <ellipse cx="981" cy="353" rx="24" ry="13" transform="rotate(22 981 353)"/>
+    <ellipse cx="1001" cy="331" rx="16" ry="11" transform="rotate(-21 1001 331)"/>
+    <path d="M990 314L995 305L1008 304L1014 312L1003 321ZM982 310L978 304M996 297V291M1015 300L1019 295M1024 314L1031 313"/>
+    <path d="M1135 230L1149 235M1132 244L1142 254M1127 214L1135 207"/>
+  </g>
+  <path fill="#b4975f" d="M690 452L695 465L708 470L695 474L690 487L686 474L673 470L686 465Z"/>
+</svg>
