@@ -56,7 +56,7 @@
 .loading-figure {
   position: relative;
   z-index: 2;
-  width: min(180px, 58vw);
+  width: min(270px, 68vw);
   transform: translate(0, 0) scale(1);
   transform-origin: center;
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -80,404 +80,41 @@
   pointer-events: none;
 }
 
-.christmas-frame {
+.loading-botanical-frame {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.christmas-decoration {
+.loading-botanical {
   position: absolute;
-  width: clamp(170px, 34vw, 360px);
-  height: 72px;
-  color: var(--color-green);
-  opacity: 0.96;
-  transform-origin: center;
-  transition:
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.45s ease;
-}
-
-.christmas-decoration::before,
-.christmas-decoration::after {
-  position: absolute;
-  top: 32px;
-  width: 28px;
-  height: 13px;
-  border: 2px solid #2f6b46;
-  border-left: 0;
-  border-bottom: 0;
-  border-radius: 50%;
-  content: "";
-}
-
-.christmas-decoration::before {
-  left: 23%;
-  transform: rotate(-24deg);
-}
-
-.christmas-decoration::after {
-  right: 22%;
-  transform: rotate(202deg);
-}
-
-.christmas-decoration--top {
-  top: 8px;
   left: 50%;
-  width: calc(100vw - min(34vw, 250px));
+  width: min(100vw, 760px);
+  max-width: none;
+  height: auto;
   transform: translateX(-50%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
-.christmas-decoration--right {
-  top: 50%;
-  right: 8px;
-  width: 72px;
-  height: calc(100vh - min(28vh, 210px));
-  transform: translateY(-50%);
-}
-
-.christmas-decoration--bottom {
-  bottom: 8px;
-  left: 50%;
-  width: calc(100vw - min(34vw, 250px));
-  transform: translateX(-50%) rotate(180deg);
-}
-
-.christmas-decoration--left {
-  top: 50%;
-  left: 8px;
-  width: 72px;
-  height: calc(100vh - min(28vh, 210px));
-  transform: translateY(-50%);
-}
-
-.christmas-decoration--left::before,
-.christmas-decoration--left::after,
-.christmas-decoration--right::before,
-.christmas-decoration--right::after {
-  top: auto;
-  left: 31px;
-}
-
-.christmas-decoration--left::before,
-.christmas-decoration--right::before {
-  top: 22%;
-  transform: rotate(68deg);
-}
-
-.christmas-decoration--left::after,
-.christmas-decoration--right::after {
-  bottom: 22%;
-  transform: rotate(248deg);
-}
-
-.christmas-decoration--top-left,
-.christmas-decoration--top-right,
-.christmas-decoration--bottom-left,
-.christmas-decoration--bottom-right {
-  width: clamp(165px, 30vw, 230px);
-}
-
-.christmas-decoration--top-left {
-  top: 10px;
-  left: 6px;
-  transform: rotate(-8deg);
-}
-
-.christmas-decoration--top-right {
-  top: 10px;
-  right: 6px;
-  transform: rotate(8deg);
-}
-
-.christmas-decoration--bottom-right {
-  right: 6px;
-  bottom: 10px;
-  transform: rotate(188deg);
-}
-
-.christmas-decoration--bottom-left {
-  bottom: 10px;
-  left: 6px;
-  transform: rotate(172deg);
-}
-
-.christmas-line {
-  position: absolute;
-  top: 34px;
-  left: 0;
-  right: 0;
-  height: 17px;
-  border-top: 2px solid #285f3e;
-  border-radius: 50%;
-}
-
-.christmas-line::before,
-.christmas-line::after {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  height: 12px;
-  border-top: 1.5px solid rgba(40, 95, 62, 0.55);
-  border-radius: 50%;
-  content: "";
-}
-
-.christmas-line::before {
-  top: -8px;
-  transform: rotate(-1.4deg);
-}
-
-.christmas-line::after {
-  top: 4px;
-  transform: rotate(1.8deg);
-}
-
-.christmas-decoration--left .christmas-line,
-.christmas-decoration--right .christmas-line {
+.loading-botanical--top {
   top: 0;
+}
+
+.loading-botanical--bottom {
   bottom: 0;
-  left: 34px;
-  right: auto;
-  width: 16px;
-  height: auto;
-  border-top: 0;
-  border-left: 2px solid #285f3e;
 }
 
-.christmas-decoration--left .christmas-line::before,
-.christmas-decoration--left .christmas-line::after,
-.christmas-decoration--right .christmas-line::before,
-.christmas-decoration--right .christmas-line::after {
-  top: 6%;
-  bottom: 6%;
-  left: auto;
-  right: auto;
-  width: 11px;
-  height: auto;
-  border-top: 0;
-  border-left: 1.5px solid rgba(40, 95, 62, 0.55);
-}
-
-.christmas-decoration--left .christmas-line::before,
-.christmas-decoration--right .christmas-line::before {
-  left: -8px;
-  transform: rotate(-1.5deg);
-}
-
-.christmas-decoration--left .christmas-line::after,
-.christmas-decoration--right .christmas-line::after {
-  left: 5px;
-  transform: rotate(1.8deg);
-}
-
-.christmas-leaf,
-.christmas-berry,
-.christmas-bulb,
-.christmas-star {
-  position: absolute;
-  display: block;
-}
-
-.christmas-leaf {
-  width: 24px;
-  height: 12px;
-  border: 1.6px solid #2f6b46;
-  border-radius: 70% 10% 70% 10%;
-  background: rgba(94, 150, 90, 0.26);
-}
-
-.christmas-leaf--1 {
-  top: 18px;
-  left: 11%;
-  transform: rotate(-28deg);
-}
-
-.christmas-leaf--2 {
-  top: 40px;
-  left: 48%;
-  transform: rotate(22deg);
-}
-
-.christmas-leaf--3 {
-  top: 17px;
-  right: 11%;
-  transform: rotate(35deg);
-}
-
-.christmas-decoration--left .christmas-leaf--1,
-.christmas-decoration--right .christmas-leaf--1 {
-  top: 11%;
-  left: 14px;
-  transform: rotate(56deg);
-}
-
-.christmas-decoration--left .christmas-leaf--2,
-.christmas-decoration--right .christmas-leaf--2 {
-  top: 48%;
-  left: 38px;
-  transform: rotate(-125deg);
-}
-
-.christmas-decoration--left .christmas-leaf--3,
-.christmas-decoration--right .christmas-leaf--3 {
-  top: auto;
-  right: 13px;
-  bottom: 12%;
-  transform: rotate(64deg);
-}
-
-.christmas-berry {
-  width: 8px;
-  height: 8px;
-  border: 1.2px solid #8f1f2c;
-  border-radius: 50%;
-  background: #cc4a4d;
-  box-shadow:
-    10px 3px 0 -1px #cc4a4d,
-    95px 11px 0 -1px #cc4a4d,
-    190px -3px 0 -1px #cc4a4d;
-}
-
-.christmas-berry--1 {
-  top: 26px;
-  left: 18%;
-}
-
-.christmas-berry--2 {
-  top: 43px;
-  right: 23%;
-}
-
-.christmas-decoration--left .christmas-berry,
-.christmas-decoration--right .christmas-berry {
-  box-shadow:
-    4px 12px 0 -1px #cc4a4d,
-    -2px 120px 0 -1px #cc4a4d,
-    6px 235px 0 -1px #cc4a4d;
-}
-
-.christmas-decoration--left .christmas-berry--1,
-.christmas-decoration--right .christmas-berry--1 {
-  top: 19%;
-  left: 31px;
-}
-
-.christmas-decoration--left .christmas-berry--2,
-.christmas-decoration--right .christmas-berry--2 {
-  top: auto;
-  right: 29px;
-  bottom: 24%;
-}
-
-.christmas-bulb {
-  width: 13px;
-  height: 16px;
-  border: 1.4px solid rgba(17, 24, 39, 0.45);
-  border-radius: 50% 50% 55% 55%;
-}
-
-.christmas-bulb::before {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  width: 1px;
-  height: 6px;
-  background: rgba(40, 95, 62, 0.75);
-  content: "";
-}
-
-.christmas-bulb--1 {
-  top: 41px;
-  left: 31%;
-  background: rgba(213, 155, 45, 0.8);
-  transform: rotate(7deg);
-}
-
-.christmas-bulb--2 {
-  top: 18px;
-  right: 32%;
-  background: rgba(178, 58, 58, 0.78);
-  transform: rotate(-9deg);
-}
-
-.christmas-decoration--left .christmas-bulb--1,
-.christmas-decoration--right .christmas-bulb--1 {
-  top: 34%;
-  left: 21px;
-}
-
-.christmas-decoration--left .christmas-bulb--2,
-.christmas-decoration--right .christmas-bulb--2 {
-  top: 66%;
-  right: 20px;
-}
-
-.christmas-star {
-  top: 22px;
-  left: 64%;
-  width: 15px;
-  height: 15px;
-  background: #e5b83f;
-  clip-path: polygon(
-    50% 0,
-    60% 34%,
-    96% 35%,
-    67% 56%,
-    78% 92%,
-    50% 70%,
-    22% 92%,
-    33% 56%,
-    4% 35%,
-    40% 34%
-  );
-  filter: drop-shadow(0 0 0 #7b5a17);
-  transform: rotate(12deg);
-}
-
-.christmas-decoration--left .christmas-star,
-.christmas-decoration--right .christmas-star {
-  top: 51%;
-  left: 26px;
-}
-
-.loading-screen--settling .christmas-decoration {
+.loading-screen--settling .loading-botanical--top {
   opacity: 0;
+  transform: translate(-50%, -110%);
 }
 
-.loading-screen--settling .christmas-decoration--top {
-  transform: translateX(-50%) translateY(-150%);
+.loading-screen--settling .loading-botanical--bottom {
+  opacity: 0;
+  transform: translate(-50%, 110%);
 }
-
-.loading-screen--settling .christmas-decoration--top-right {
-  transform: translate(130%, -130%) rotate(8deg);
-}
-
-.loading-screen--settling .christmas-decoration--right {
-  transform: translate(150%, -50%);
-}
-
-.loading-screen--settling .christmas-decoration--bottom-right {
-  transform: translate(130%, 130%) rotate(188deg);
-}
-
-.loading-screen--settling .christmas-decoration--bottom {
-  transform: translateX(-50%) translateY(150%) rotate(180deg);
-}
-
-.loading-screen--settling .christmas-decoration--bottom-left {
-  transform: translate(-130%, 130%) rotate(172deg);
-}
-
-.loading-screen--settling .christmas-decoration--left {
-  transform: translate(-150%, -50%);
-}
-
-.loading-screen--settling .christmas-decoration--top-left {
-  transform: translate(-130%, -130%) rotate(-8deg);
-}
-
 .firework-burst {
   position: absolute;
   left: 50%;
@@ -1572,22 +1209,6 @@
   }
 }
 
-@media (max-width: 759px) {
-  .christmas-decoration--top,
-  .christmas-decoration--bottom {
-    width: calc(100vw + 36px);
-  }
-
-  .christmas-decoration--top-left,
-  .christmas-decoration--top-right,
-  .christmas-decoration--left,
-  .christmas-decoration--right,
-  .christmas-decoration--bottom-left,
-  .christmas-decoration--bottom-right {
-    display: none;
-  }
-}
-
 @media (max-width: 480px) {
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1641,6 +1262,7 @@
   .wedding-shell,
   .loading-screen--settling,
   .loading-figure,
+  .loading-botanical,
   .gallery-thumb-button,
   .gallery-thumb,
   .viewer-overlay,

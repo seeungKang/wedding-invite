@@ -403,10 +403,28 @@
 
 .day-cell.highlighted {
   position: relative;
-  background: var(--color-red);
-  color: #fffaf0;
+  background: transparent;
+  color: var(--color-red);
   border: 0;
   outline: 0;
+}
+
+.day-cell.highlighted::before {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 38px;
+  left: 50%;
+  top: calc(50% + 3px);
+  transform: translate(-50%, -52%) rotate(25deg);
+  background: var(--color-red);
+  -webkit-mask: url("/images/calendar-heart.webp") center / contain no-repeat;
+  mask: url("/images/calendar-heart.webp") center / contain no-repeat;
+}
+
+.day-cell.highlighted .day-number {
+  position: relative;
+  z-index: 1;
 }
 
 .day-cell.highlighted::after {

@@ -41,7 +41,7 @@ function CalendarSection({ calendar }: CalendarSectionProps) {
               key={`day-${day}`}
               className={`day-cell ${isHighlighted ? "highlighted" : ""}`}
             >
-              {day}
+              <span className="day-number">{day}</span>
             </span>
           );
         })}
