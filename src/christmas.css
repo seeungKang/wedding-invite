@@ -335,8 +335,11 @@
 .venue-flower-note {
   margin: 16px 0;
   color: var(--color-green);
-  font-size: 0.88rem;
-  line-height: 1.7;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.95;
+  text-align: center;
+  word-break: keep-all;
 }
 
 .venue-access-note strong {
