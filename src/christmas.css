@@ -332,6 +332,13 @@
   word-break: keep-all;
 }
 
+.venue-flower-note {
+  margin: 16px 0;
+  color: var(--color-green);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
 .venue-access-note strong {
   color: var(--color-red);
   font-weight: 600;

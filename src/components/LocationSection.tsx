@@ -43,6 +43,7 @@ function LocationSection({ location }: LocationSectionProps) {
         <br />
         28층 스카이홀로 올라와 주세요.
       </p>
+      <p className="venue-flower-note">화환은 정중히 사양합니다.</p>
       {location.venuePhone.length > 0 ? (
         <a className="venue-text phone-link" href={`tel:${location.venuePhone}`}>
           {location.venuePhone}
