@@ -12,6 +12,7 @@ function Gallery({ items }: GalleryProps) {
   const [visibleCount, setVisibleCount] = useState(6);
   const [failedImageIds, setFailedImageIds] = useState<Set<string>>(new Set());
   const pointerStartXRef = useRef<number | null>(null);
+  const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
   const hasMoreItems = visibleCount < items.length;
   const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
@@ -47,9 +48,15 @@ function Gallery({ items }: GalleryProps) {
     }
 
     window.setTimeout(() => {
-      document
-        .querySelector(`[data-viewer-thumb="${viewerIndex}"]`)
-        ?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const strip = thumbnailStripRef.current;
+      const thumbnail = strip?.querySelector<HTMLElement>(`[data-viewer-thumb="${viewerIndex}"]`);
+      if (strip && thumbnail) {
+        strip.scrollTo({
+          left: strip.scrollLeft + thumbnail.getBoundingClientRect().left - strip.getBoundingClientRect().left
+            - (strip.clientWidth - thumbnail.clientWidth) / 2,
+          behavior: "smooth",
+        });
+      }
     }, 0);
   }, [viewerIndex]);
 
@@ -211,7 +218,9 @@ function Gallery({ items }: GalleryProps) {
               aria-label="사진 뷰어 닫기"
               type="button"
             >
-              ✕
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
 
@@ -246,7 +255,7 @@ function Gallery({ items }: GalleryProps) {
               </button>
             </div>
           </div>
-          <div className="viewer-thumbnail-strip" aria-label="사진 미리보기">
+          <div ref={thumbnailStripRef} className="viewer-thumbnail-strip" aria-label="사진 미리보기">
             {items.map((item, index) => (
               <button
                 key={`viewer-thumb-${item.id}`}
