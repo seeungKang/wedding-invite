@@ -163,7 +163,7 @@ function App() {
               <p className="hero-sky-date-time">토요일 <span>·</span> 오후 1시</p>
             </div>
             <div className="hero-lettering-overlay">
-              <WeddingLettering />
+              <WeddingLettering animate={loaderPhase === "done"} />
             </div>
           </div>
           <div className="hero-content">
