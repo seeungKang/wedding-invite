@@ -208,7 +208,8 @@ function App() {
         <section className="section event-meta" id="detail">
           <p>{eventInfo.eventDateLabel}</p>
           <p>{eventInfo.eventTime}</p>
-          <p>{`${eventInfo.venueName} · ${eventInfo.venueAddress}`}</p>
+          <p>{eventInfo.venueName}</p>
+          <p>{eventInfo.venueAddress}</p>
         </section>
 
         <KakaoShareButton />
