@@ -36,22 +36,53 @@ function LocationSection({ location }: LocationSectionProps) {
 
       <h3 className="venue-title">{location.venueName}</h3>
       <p className="venue-text">{location.venueAddress}</p>
-      <p className="venue-access-note">
+      <div className="venue-notices">
+        <aside className="venue-notice" aria-labelledby="venue-access-heading">
+          <svg className="venue-notice-icon" viewBox="0 0 96 64" fill="none" aria-hidden="true">
+            <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 54V18h36v36M10 54h40M18 54V25h24v29M30 25v29" />
+              <path d="M24 11l6-6 6 6M30 5v12M63 44V22m-5 6 5-6 5 6" />
+            </g>
+            <g fill="currentColor" fontFamily="Georgia, serif" fontSize="13" textAnchor="middle">
+              <text x="76" y="18">28F</text>
+              <text x="76" y="57">1F</text>
+            </g>
+          </svg>
+          <h4 id="venue-access-heading">스카이홀 이용 안내</h4>
+          <p className="venue-access-note">
         스카이홀은 <strong>1층에서만</strong> 올라가실 수 있습니다.
         <br />
         반드시 1층에서 엘리베이터를 이용해
         <br />
         28층 스카이홀로 올라와 주세요.
-      </p>
-      <p className="venue-flower-note">
+          </p>
+        </aside>
+        <aside className="venue-notice" aria-labelledby="venue-flower-heading">
+          <svg className="venue-notice-icon" viewBox="0 0 96 64" fill="none" aria-hidden="true">
+            <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <ellipse cx="48" cy="25" rx="15" ry="18" />
+              <ellipse cx="48" cy="25" rx="9" ry="12" />
+              <path d="M42 42l-6 16m18-16 6 16M40 48h16M42 12l-4-4m16 4 4-4M34 22l-5-1m33 1 5-1M35 33l-5 3m31-3 5 3" />
+              <path d="M46 39l-6 3 6 3 2-4 2 4 6-3-6-3M46 44l-3 8m7-8 3 8" />
+              <circle cx="48" cy="7" r="3" />
+              <circle cx="34" cy="15" r="3" />
+              <circle cx="62" cy="15" r="3" />
+              <circle cx="32" cy="28" r="3" />
+              <circle cx="64" cy="28" r="3" />
+            </g>
+            <path d="M25 54L71 8" stroke="#eeeee4" strokeWidth="7" />
+            <path d="M25 54L71 8" stroke="var(--color-red)" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          <h4 id="venue-flower-heading">화환 안내</h4>
+          <p className="venue-flower-note">
         사옥 예식 특성상 화환 배치가 어려운 점
         <br />
-        너른 양해 부탁드립니다.
-        <br />
-        전해주시는 따뜻한 축하를
+        너른 양해 부탁드리며, 따뜻한 축하를
         <br />
         감사히 마음에 담겠습니다.
-      </p>
+          </p>
+        </aside>
+      </div>
       {location.venuePhone.length > 0 ? (
         <a className="venue-text phone-link" href={`tel:${location.venuePhone}`}>
           {location.venuePhone}
